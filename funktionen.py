@@ -184,7 +184,6 @@ def angriff(frame, angreifer, verteidiger):
     angreifername = angreifer.getname()
     verteidigername = verteidiger.getname()
     
-    #angreifer.resetatkvar()
     print(frame.counter, angreifer.atkvar)
     
     if rangecheck(angreifer, verteidiger) == True:
@@ -357,12 +356,12 @@ def initialisierung(frame):
     if pn == 1:
         if frame.actcl[0].alive == True:
             print(frame.actcl[0].getname(), "gewinnt!")
-            showwin(6, 0)
+            showdeath(0)
             ledmatrix.show()
         
         elif frame.actcl[1].alive == True:
             print(ac[1].getname(), "gewinnt!")
-            showwin(0, 6)
+            showdeath(6)
             ledmatrix.show()
     
     else:
@@ -420,11 +419,9 @@ def showmap(r, g, b):
             bb = int(b)
             ledmatrix.set_pixel(x, y, rr, gg, bb)
 
-def showwin(winner, looser):
-#    for x in range(0 ,7):
-#        ledmatrix.set_pixel(x, winner, 0, 255, 0)
+def showdeath(ini):
     for x in range(0 ,7):
-        ledmatrix.set_pixel(x, looser, 255, 0, 0)    
+        ledmatrix.set_pixel(x, ini, 255, 0, 0)    
     
 def showloose():
     for x in range(0 ,7):
